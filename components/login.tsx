@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
-import { IconGoogle, IconX, IconGlobe } from "@/icons"
+import { IconGoogle, IconX, IconGlobe, IconLoader } from "@/icons"
+import { useSession, signIn } from "next-auth/react"
 
 export default function Login({
   open,
@@ -23,13 +24,19 @@ export default function Login({
             Use your Google or another service to continue with 3xx.
           </span>
           <div className="mt-6 flex flex-col gap-3">
-            <div className="w-full h-10 border border-[#ddd] rounded-xs flex items-center justify-center
-              gap-2 cursor-pointer hover:bg-[#f7f7f7] transition select-none">
+            <div
+              className="w-full h-10 border border-[#ddd] rounded-xs flex items-center justify-center
+                gap-2 cursor-pointer hover:bg-[#f7f7f7] transition select-none"
+              onClick={() => signIn("google")}
+            >
               <IconGoogle size={18} />
               <span className="mt-0.5"> Continue with Google </span>
             </div>
-            <div className="w-full h-10 border border-[#ddd] rounded-xs flex items-center justify-center
-              gap-2 cursor-pointer hover:bg-[#f7f7f7] transition select-none">
+            <div
+              className="w-full h-10 border border-[#ddd] rounded-xs flex items-center justify-center
+                gap-2 cursor-pointer hover:bg-[#f7f7f7] transition select-none"
+              onClick={() => signIn("twitter")}
+            >
               <IconX />
               <span className="mt-0.5"> Continue with X </span>
             </div>
