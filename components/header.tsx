@@ -18,14 +18,14 @@ export default function Header(): React.JSX.Element {
 
       <div className="h-10 w-full flex items-center justify-between border-b border-b-[#0000001A] px-4 text-[12px]">
         <span> Free shipping </span>
-        <div className="flex items-center gap-5 justify-center">
-          <div className="cursor-pointer" onClick={() => setLoginOpen(true)}>
+        <div className="flex items-center gap-3 justify-center">
+          <button className="cursor-pointer w-8 h-8 items-center justify-center flex rounded-[50%]" onClick={() => setLoginOpen(true)}>
             <IconUser />
-          </div>
-          <div className="relative cursor-pointer">
+          </button>
+          <button className="relative cursor-pointer  w-8 h-8 items-center justify-center flex rounded-[50%]">
             <IconCart />
-            { !emptyCart && <div className="absolute w-1.75 h-1.75 rounded-[50%] bg-green-400 -top-0.5 -right-1"/> }
-          </div>
+            { !emptyCart && <div className="absolute w-1.75 h-1.75 rounded-[50%] bg-green-400 top-1.5 right-1"/> }
+          </button>
         </div>
       </div>
 
@@ -35,7 +35,7 @@ export default function Header(): React.JSX.Element {
             src="./3xx.svg"
             width={96}
             height={96}
-            alt=""
+            alt=" "
             draggable={false}
             quality={100}
             priority

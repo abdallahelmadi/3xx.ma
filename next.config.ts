@@ -7,7 +7,21 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: true
   },
   images: {
-    qualities: [75, 85, 95, 100]
+    qualities: [75, 85, 95, 100],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+        port: "",
+        pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**"
+      }
+    ]
   }
 }
 

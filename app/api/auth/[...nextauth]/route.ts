@@ -1,4 +1,4 @@
-import NextAuth            from "next-auth"
+import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import TwitterProvider from "next-auth/providers/twitter"
 
@@ -6,11 +6,13 @@ const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      version: "2.0"
     }),
     TwitterProvider({
       clientId: process.env.TWITTER_CLIENT_ID as string,
-      clientSecret: process.env.TWITTER_CLIENT_SECRET as string
+      clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
+      version: "2.0"
     })
   ],
   secret: process.env.NEXTAUTH_SECRET as string,
@@ -21,9 +23,14 @@ const handler = NextAuth({
     },
     async signIn({ user, account, profile }) {
       // called when no session active
-      console.log("user: " + user.email)
-      console.log("account: " + account)
-      console.log("profile: " + profile)
+
+      /* insert into database */
+      // console.log("HELLO:::::::::::::: " + user.id)
+      // console.log("HELLO:::::::::::::: " + user.email)
+      // console.log("HELLO:::::::::::::: " + user.image)
+      // console.log("HELLO:::::::::::::: " + user.name) // full name
+      // console.log("HELLO:::::::::::::: " + account?.provider)
+
       return true
     }
   },
