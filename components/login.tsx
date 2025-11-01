@@ -5,6 +5,7 @@ import Image from "next/image"
 import { IconGoogle, IconX, IconLoader, IconLogOut } from "@/icons"
 import { useSession, signIn, signOut } from "next-auth/react"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Input } from "@/components/ui/input"
 
 export default function Login({
   open,
@@ -16,6 +17,7 @@ export default function Login({
 
   const { data: session, status } = useSession()
   const [loading, setLoading] = useState<[boolean, boolean]>([false, false])
+  const [saveLoading, setSaveLoading] = useState<boolean>(false)
 
   return (
     <div
@@ -114,8 +116,19 @@ export default function Login({
                     <IconLogOut size={18} color="red" />
                   </button>
                 </div>
-                <div className="mt-4">
-                  ...
+                <div className="mt-5 text-[13px] flex flex-col">
+                  Your address:
+                  {/* `shadcn/ui`: https://ui.shadcn.com/docs/components/input */}
+                  <Input type="email" placeholder="Address" className="mt-2 rounded-sm text-[14px]" />
+                  <button
+                    className="w-full h-10 bg-black rounded-sm mt-2 text-white cursor-pointer transition hover:bg-[#1b1b1b] flex items-center justify-center"
+                    onClick={() => {
+                      setSaveLoading(true)
+                      setSaveLoading(false)
+                    }}
+                  >
+                    { !saveLoading ? "Save your address" : <IconLoader /> }
+                  </button>
                 </div>
               </>
             )
